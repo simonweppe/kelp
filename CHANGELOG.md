@@ -7,6 +7,23 @@ the tracker was developed privately from 2026-06.
 
 ## [Unreleased]
 
+### Added — SCHISM reader
+
+- `mesh.type: schism` tracks SCHISM output in 2-D: the depth-averaged velocity
+  on the nodes (`dahv`, or `depthAverageVelX`/`depthAverageVelY` from the
+  `out2d` files of SCHISM 5.10 and later), on the mesh read from the same file
+  (triangles and quads). Node velocities, so `numerics.uv_interp: barycentric`.
+- Projected meshes (node x/y in metres) are placed with the file's
+  `longitude`/`latitude` variables, and their velocity is turned from grid
+  north to true north with the rotation between the two coordinate sets,
+  measured on the mesh when it loads. No projection library is needed. A
+  smooth fit over the domain keeps float32 coordinates, as SCHISM products
+  often ship them, from turning small elements' angles: on the SCHISM Tauranga
+  mesh (NZTM, EPSG:2193) the rotation is within 0.001 degrees of pyproj's.
+- The reader opens only the velocity variable(s), so `numerics.prefetch_size`
+  never loads SCHISM's 3-D `zcor` next to them.
+- Refused: 3-D tracking, `mode.sample_vars`, `mesh.rotation`.
+
 ### Added — record-time options for every reader
 
 - The keys `data.time_stamp`, `data.time_window` and `data.time_offset`,

@@ -50,6 +50,7 @@ def register(name: str):
 
 #: reader modules imported on first use by ``get_reader``
 _KNOWN_READERS = {"fesomc": ".fesomc", "fesom2": ".fesom2", "nemo": ".nemo",
+                  "schism": ".schism",
                   "healpix": ".healpix", "fesom14": ".fesom14"}
 
 

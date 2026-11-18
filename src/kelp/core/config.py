@@ -457,7 +457,7 @@ _GRID_HASH_CELL_RULES = ("occupancy", "legacy")
 @dataclass
 class MeshConfig:
     """Mesh source settings."""
-    type: str = "fesomc"           # fesomc / fesom2 / nemo / healpix / fesom14
+    type: str = "fesomc"           # fesomc / fesom2 / nemo / healpix / fesom14 / schism
     meshpath: str = ""             # path to mesh files (ASCII dir or NC file)
     # Earth radius (m) for mesh-derived areas/metrics.  None -> the mesh
     # family default chosen by the reader: FESOM2 6_367_500.0 (the FESOM
